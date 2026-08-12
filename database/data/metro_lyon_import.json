@@ -1,0 +1,364 @@
+[
+  {
+    "code": "D",
+    "name": "Ligne D",
+    "color_hex": "#008938",
+    "geo_json_path": "geojson\\line_d.geojson",
+    "min_cars_per_train": 2,
+    "max_cars_per_train": 4,
+    "stations": [
+      {
+        "name": "Gare de Vaise - Gérard Collomb",
+        "latitude": 45.780564,
+        "longitude": 4.804539,
+        "passenger_flow_weight": 1.0,
+        "order": 1
+      },
+      {
+        "name": "Valmy",
+        "latitude": 45.774598,
+        "longitude": 4.805471,
+        "passenger_flow_weight": 1.0,
+        "order": 2
+      },
+      {
+        "name": "Gorge de Loup",
+        "latitude": 45.766442,
+        "longitude": 4.805503,
+        "passenger_flow_weight": 1.0,
+        "order": 3
+      },
+      {
+        "name": "Vieux Lyon - Cathédrale Saint-Jean",
+        "latitude": 45.760193,
+        "longitude": 4.825968,
+        "passenger_flow_weight": 1.0,
+        "order": 4
+      },
+      {
+        "name": "Bellecour",
+        "latitude": 45.757091,
+        "longitude": 4.833412,
+        "passenger_flow_weight": 1.0,
+        "order": 5
+      },
+      {
+        "name": "Guillotière",
+        "latitude": 45.755354,
+        "longitude": 4.842843,
+        "passenger_flow_weight": 1.0,
+        "order": 6
+      },
+      {
+        "name": "Saxe - Gambetta",
+        "latitude": 45.753914,
+        "longitude": 4.847025,
+        "passenger_flow_weight": 1.0,
+        "order": 7
+      },
+      {
+        "name": "Garibaldi",
+        "latitude": 45.751622,
+        "longitude": 4.853488,
+        "passenger_flow_weight": 1.0,
+        "order": 8
+      },
+      {
+        "name": "Sans Souci",
+        "latitude": 45.747584,
+        "longitude": 4.865247,
+        "passenger_flow_weight": 1.0,
+        "order": 9
+      },
+      {
+        "name": "Monplaisir - Lumière",
+        "latitude": 45.745521,
+        "longitude": 4.871377,
+        "passenger_flow_weight": 1.0,
+        "order": 10
+      },
+      {
+        "name": "Grange Blanche",
+        "latitude": 45.742997,
+        "longitude": 4.87888,
+        "passenger_flow_weight": 1.0,
+        "order": 11
+      },
+      {
+        "name": "Laennec",
+        "latitude": 45.738372,
+        "longitude": 4.886579,
+        "passenger_flow_weight": 1.0,
+        "order": 12
+      },
+      {
+        "name": "Mermoz - Pinel",
+        "latitude": 45.730558,
+        "longitude": 4.887301,
+        "passenger_flow_weight": 1.0,
+        "order": 13
+      },
+      {
+        "name": "Parilly",
+        "latitude": 45.719518,
+        "longitude": 4.887552,
+        "passenger_flow_weight": 1.0,
+        "order": 14
+      },
+      {
+        "name": "Gare de Vénissieux",
+        "latitude": 45.705464,
+        "longitude": 4.88802,
+        "passenger_flow_weight": 1.0,
+        "order": 15
+      }
+    ]
+  },
+  {
+    "code": "C",
+    "name": "Ligne C",
+    "color_hex": "#F07D00",
+    "geo_json_path": "geojson\\line_c.geojson",
+    "min_cars_per_train": 2,
+    "max_cars_per_train": 4,
+    "stations": [
+      {
+        "name": "Hôtel de Ville - Louis Pradel",
+        "latitude": 45.768151,
+        "longitude": 4.836024,
+        "passenger_flow_weight": 1.0,
+        "order": 1
+      },
+      {
+        "name": "Croix-Paquet",
+        "latitude": 45.77101,
+        "longitude": 4.83618,
+        "passenger_flow_weight": 1.0,
+        "order": 2
+      },
+      {
+        "name": "Croix-Rousse",
+        "latitude": 45.774502,
+        "longitude": 4.831871,
+        "passenger_flow_weight": 1.0,
+        "order": 3
+      },
+      {
+        "name": "Hénon",
+        "latitude": 45.779479,
+        "longitude": 4.827468,
+        "passenger_flow_weight": 1.0,
+        "order": 4
+      },
+      {
+        "name": "Cuire",
+        "latitude": 45.78532,
+        "longitude": 4.832631,
+        "passenger_flow_weight": 1.0,
+        "order": 5
+      }
+    ]
+  },
+  {
+    "code": "B",
+    "name": "Ligne B",
+    "color_hex": "#0172B7",
+    "geo_json_path": "geojson\\line_b.geojson",
+    "min_cars_per_train": 2,
+    "max_cars_per_train": 4,
+    "stations": [
+      {
+        "name": "Charpennes - Charles Hernu",
+        "latitude": 45.770418,
+        "longitude": 4.863332,
+        "passenger_flow_weight": 1.0,
+        "order": 1
+      },
+      {
+        "name": "Brotteaux",
+        "latitude": 45.767119,
+        "longitude": 4.859379,
+        "passenger_flow_weight": 1.0,
+        "order": 2
+      },
+      {
+        "name": "Gare Part-Dieu - Vivier Merle",
+        "latitude": 45.761605,
+        "longitude": 4.857444,
+        "passenger_flow_weight": 1.0,
+        "order": 3
+      },
+      {
+        "name": "Place Guichard - Bourse du Travail",
+        "latitude": 45.759187,
+        "longitude": 4.847388,
+        "passenger_flow_weight": 1.0,
+        "order": 4
+      },
+      {
+        "name": "Saxe - Gambetta",
+        "latitude": 45.753283,
+        "longitude": 4.846684,
+        "passenger_flow_weight": 1.0,
+        "order": 5
+      },
+      {
+        "name": "Jean Macé",
+        "latitude": 45.746032,
+        "longitude": 4.842387,
+        "passenger_flow_weight": 1.0,
+        "order": 6
+      },
+      {
+        "name": "Place Jean Jaurès",
+        "latitude": 45.737559,
+        "longitude": 4.837337,
+        "passenger_flow_weight": 1.0,
+        "order": 7
+      },
+      {
+        "name": "Debourg",
+        "latitude": 45.731067,
+        "longitude": 4.833476,
+        "passenger_flow_weight": 1.0,
+        "order": 8
+      },
+      {
+        "name": "Stade de Gerland—Le LOU",
+        "latitude": 45.726744,
+        "longitude": 4.830857,
+        "passenger_flow_weight": 1.0,
+        "order": 9
+      },
+      {
+        "name": "Gare d'Oullins",
+        "latitude": 45.716674,
+        "longitude": 4.81453,
+        "passenger_flow_weight": 1.0,
+        "order": 10
+      },
+      {
+        "name": "Oullins Centre",
+        "latitude": 45.714336,
+        "longitude": 4.805269,
+        "passenger_flow_weight": 1.0,
+        "order": 11
+      },
+      {
+        "name": "Saint-Genis-Laval Hôpital Lyon Sud",
+        "latitude": 45.701743,
+        "longitude": 4.80436,
+        "passenger_flow_weight": 1.0,
+        "order": 12
+      }
+    ]
+  },
+  {
+    "code": "A",
+    "name": "Ligne A",
+    "color_hex": "#E52320",
+    "geo_json_path": "geojson\\line_a.geojson",
+    "min_cars_per_train": 2,
+    "max_cars_per_train": 4,
+    "stations": [
+      {
+        "name": "Perrache",
+        "latitude": 45.749623,
+        "longitude": 4.826771,
+        "passenger_flow_weight": 1.0,
+        "order": 1
+      },
+      {
+        "name": "Ampère - Victor Hugo",
+        "latitude": 45.753052,
+        "longitude": 4.82916,
+        "passenger_flow_weight": 1.0,
+        "order": 2
+      },
+      {
+        "name": "Bellecour",
+        "latitude": 45.757597,
+        "longitude": 4.833113,
+        "passenger_flow_weight": 1.0,
+        "order": 3
+      },
+      {
+        "name": "Cordeliers",
+        "latitude": 45.763309,
+        "longitude": 4.835789,
+        "passenger_flow_weight": 1.0,
+        "order": 4
+      },
+      {
+        "name": "Hôtel de Ville - Louis Pradel",
+        "latitude": 45.767269,
+        "longitude": 4.836016,
+        "passenger_flow_weight": 1.0,
+        "order": 5
+      },
+      {
+        "name": "Foch",
+        "latitude": 45.768764,
+        "longitude": 4.844389,
+        "passenger_flow_weight": 1.0,
+        "order": 6
+      },
+      {
+        "name": "Masséna",
+        "latitude": 45.7696,
+        "longitude": 4.853419,
+        "passenger_flow_weight": 1.0,
+        "order": 7
+      },
+      {
+        "name": "Charpennes - Charles Hernu",
+        "latitude": 45.770674,
+        "longitude": 4.865068,
+        "passenger_flow_weight": 1.0,
+        "order": 8
+      },
+      {
+        "name": "République - Villeurbanne",
+        "latitude": 45.770587,
+        "longitude": 4.873995,
+        "passenger_flow_weight": 1.0,
+        "order": 9
+      },
+      {
+        "name": "Gratte-Ciel",
+        "latitude": 45.769054,
+        "longitude": 4.882311,
+        "passenger_flow_weight": 1.0,
+        "order": 10
+      },
+      {
+        "name": "Flachet - Alain Gilles",
+        "latitude": 45.767771,
+        "longitude": 4.889288,
+        "passenger_flow_weight": 1.0,
+        "order": 11
+      },
+      {
+        "name": "Cusset",
+        "latitude": 45.765643,
+        "longitude": 4.900848,
+        "passenger_flow_weight": 1.0,
+        "order": 12
+      },
+      {
+        "name": "Laurent Bonnevay - Astroballe",
+        "latitude": 45.764134,
+        "longitude": 4.908827,
+        "passenger_flow_weight": 1.0,
+        "order": 13
+      },
+      {
+        "name": "Vaulx-en-Velin - La Soie",
+        "latitude": 45.761249,
+        "longitude": 4.921943,
+        "passenger_flow_weight": 1.0,
+        "order": 14
+      }
+    ]
+  }
+]

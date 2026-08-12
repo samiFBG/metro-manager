@@ -1,0 +1,782 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Perrache",
+        "order": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.826771,
+          45.749623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Ampère - Victor Hugo",
+        "order": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.82916,
+          45.753052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Bellecour",
+        "order": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.833113,
+          45.757597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Cordeliers",
+        "order": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.835789,
+          45.763309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Hôtel de Ville - Louis Pradel",
+        "order": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.836016,
+          45.767269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Foch",
+        "order": 6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.844389,
+          45.768764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Masséna",
+        "order": 7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.853419,
+          45.7696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Charpennes - Charles Hernu",
+        "order": 8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.865068,
+          45.770674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "République - Villeurbanne",
+        "order": 9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.873995,
+          45.770587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Gratte-Ciel",
+        "order": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.882311,
+          45.769054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Flachet - Alain Gilles",
+        "order": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.889288,
+          45.767771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Cusset",
+        "order": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.900848,
+          45.765643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Laurent Bonnevay - Astroballe",
+        "order": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.908827,
+          45.764134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "station",
+        "name": "Vaulx-en-Velin - La Soie",
+        "order": 14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.921943,
+          45.761249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.826771,
+            45.749623
+          ],
+          [
+            4.827153,
+            45.750022
+          ],
+          [
+            4.827416,
+            45.750328
+          ],
+          [
+            4.827647,
+            45.750649
+          ],
+          [
+            4.828404,
+            45.751856
+          ],
+          [
+            4.828789,
+            45.752449
+          ],
+          [
+            4.828956,
+            45.752727
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.828956,
+            45.752727
+          ],
+          [
+            4.82916,
+            45.753052
+          ],
+          [
+            4.829241,
+            45.753183
+          ],
+          [
+            4.829403,
+            45.753447
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.829403,
+            45.753447
+          ],
+          [
+            4.831354,
+            45.756563
+          ],
+          [
+            4.831469,
+            45.756745
+          ],
+          [
+            4.831579,
+            45.756889
+          ],
+          [
+            4.831733,
+            45.757037
+          ],
+          [
+            4.831866,
+            45.757131
+          ],
+          [
+            4.832016,
+            45.757223
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.832016,
+            45.757223
+          ],
+          [
+            4.832315,
+            45.757351
+          ],
+          [
+            4.832698,
+            45.757478
+          ],
+          [
+            4.833113,
+            45.757597
+          ],
+          [
+            4.833376,
+            45.75768
+          ],
+          [
+            4.833661,
+            45.757778
+          ],
+          [
+            4.833873,
+            45.757861
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.833873,
+            45.757861
+          ],
+          [
+            4.834027,
+            45.757939
+          ],
+          [
+            4.834231,
+            45.758079
+          ],
+          [
+            4.834384,
+            45.758237
+          ],
+          [
+            4.835434,
+            45.759887
+          ],
+          [
+            4.835651,
+            45.760513
+          ],
+          [
+            4.835712,
+            45.761477
+          ],
+          [
+            4.835789,
+            45.763309
+          ],
+          [
+            4.835931,
+            45.765468
+          ],
+          [
+            4.836004,
+            45.766898
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.836004,
+            45.766898
+          ],
+          [
+            4.836016,
+            45.767269
+          ],
+          [
+            4.836026,
+            45.767529
+          ],
+          [
+            4.836069,
+            45.767792
+          ],
+          [
+            4.836141,
+            45.767984
+          ],
+          [
+            4.836181,
+            45.768079
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.836181,
+            45.768079
+          ],
+          [
+            4.836219,
+            45.768141
+          ],
+          [
+            4.836376,
+            45.768311
+          ],
+          [
+            4.836464,
+            45.768372
+          ],
+          [
+            4.836573,
+            45.768415
+          ],
+          [
+            4.836833,
+            45.768491
+          ],
+          [
+            4.837127,
+            45.768555
+          ],
+          [
+            4.837393,
+            45.768593
+          ],
+          [
+            4.837759,
+            45.76863
+          ],
+          [
+            4.838368,
+            45.768639
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.838368,
+            45.768639
+          ],
+          [
+            4.839852,
+            45.76866
+          ],
+          [
+            4.840792,
+            45.768663
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.840792,
+            45.768663
+          ],
+          [
+            4.842922,
+            45.768672
+          ],
+          [
+            4.844022,
+            45.768727
+          ],
+          [
+            4.844389,
+            45.768764
+          ],
+          [
+            4.845571,
+            45.76888
+          ],
+          [
+            4.853419,
+            45.7696
+          ],
+          [
+            4.858536,
+            45.770121
+          ],
+          [
+            4.860379,
+            45.770305
+          ],
+          [
+            4.861164,
+            45.77033
+          ],
+          [
+            4.864173,
+            45.770588
+          ],
+          [
+            4.865068,
+            45.770674
+          ],
+          [
+            4.865661,
+            45.770745
+          ],
+          [
+            4.867043,
+            45.770896
+          ],
+          [
+            4.868247,
+            45.771023
+          ],
+          [
+            4.868789,
+            45.771053
+          ],
+          [
+            4.869946,
+            45.771072
+          ],
+          [
+            4.870867,
+            45.77104
+          ],
+          [
+            4.871896,
+            45.770941
+          ],
+          [
+            4.87285,
+            45.770792
+          ],
+          [
+            4.873995,
+            45.770587
+          ],
+          [
+            4.880941,
+            45.769307
+          ],
+          [
+            4.882311,
+            45.769054
+          ],
+          [
+            4.885791,
+            45.768412
+          ],
+          [
+            4.887716,
+            45.768059
+          ],
+          [
+            4.889288,
+            45.767771
+          ],
+          [
+            4.892045,
+            45.767257
+          ],
+          [
+            4.894781,
+            45.766753
+          ],
+          [
+            4.897833,
+            45.766194
+          ],
+          [
+            4.900848,
+            45.765643
+          ],
+          [
+            4.900957,
+            45.765623
+          ],
+          [
+            4.901003,
+            45.765614
+          ],
+          [
+            4.907672,
+            45.764357
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.907672,
+            45.764357
+          ],
+          [
+            4.90862,
+            45.764173
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "track",
+        "line": "A",
+        "color": "#E52320"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.90862,
+            45.764173
+          ],
+          [
+            4.908827,
+            45.764134
+          ],
+          [
+            4.909827,
+            45.763932
+          ],
+          [
+            4.913378,
+            45.763215
+          ],
+          [
+            4.91476,
+            45.762863
+          ],
+          [
+            4.916006,
+            45.762463
+          ],
+          [
+            4.918085,
+            45.761696
+          ],
+          [
+            4.919922,
+            45.761014
+          ],
+          [
+            4.920191,
+            45.760928
+          ],
+          [
+            4.920243,
+            45.760916
+          ],
+          [
+            4.920337,
+            45.760905
+          ],
+          [
+            4.920424,
+            45.7609
+          ],
+          [
+            4.920482,
+            45.7609
+          ],
+          [
+            4.920545,
+            45.760903
+          ],
+          [
+            4.920609,
+            45.760913
+          ],
+          [
+            4.920889,
+            45.760984
+          ],
+          [
+            4.921108,
+            45.761039
+          ],
+          [
+            4.921943,
+            45.761249
+          ]
+        ]
+      }
+    }
+  ]
+}
