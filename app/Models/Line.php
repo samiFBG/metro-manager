@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Enums\Lines\LineAutomationLevel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Line extends Model
@@ -15,6 +17,7 @@ class Line extends Model
         'code',
         'name',
         'color_hex',
+        'automation_level', // 'automated', 'semi_automated', 'manual'
         'geo_json_path',
         'train_model_id',
         'min_cars_per_train',
@@ -22,12 +25,13 @@ class Line extends Model
     ];
 
     /**
-     * Casts pour convertir automatiquement le GeoJSON en tableau PHP/JSON
+     * Casts pour convertir automatiquement les types de colonnes
      */
     protected $casts = [
         'geo_json_path' => 'array',
         'min_cars_per_train' => 'integer',
         'max_cars_per_train' => 'integer',
+        'automation_level' => LineAutomationLevel::class,
     ];
 
     public function dedicatedTrainModel(): BelongsTo
@@ -40,9 +44,9 @@ class Line extends Model
         return $this->hasMany(Station::class)->orderBy('order');
     }
 
-    public function depots(): HasMany
+    public function depots(): BelongsToMany
     {
-        return $this->hasMany(Depot::class);
+        return $this->belongsToMany(Depot::class);
     }
 
     public function activeTrains(): HasMany

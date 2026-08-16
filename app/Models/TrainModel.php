@@ -17,7 +17,16 @@ class TrainModel extends Model
         'electricity_cost_per_km',
         'maintenance_cost_factor',
         'max_speed',
-        'operating_speed', // Added for real commercial operating speed
+        'operating_speed',
+        'composition_pattern', // ["M", "R", "M"]
+        'car_width',          // Ex: 2.89
+        'max_coupled_units', // 1 = US, 2 = UM2, etc.
+    ];
+
+    protected $casts = [
+        'composition_pattern' => 'array',
+        'car_width' => 'float',
+        'max_coupled_units' => 'integer',
     ];
 
     public function lines(): HasMany
@@ -28,5 +37,10 @@ class TrainModel extends Model
     public function trains(): HasMany
     {
         return $this->hasMany(Train::class);
+    }
+
+    public function cars(): HasMany
+    {
+        return $this->hasMany(TrainCar::class);
     }
 }

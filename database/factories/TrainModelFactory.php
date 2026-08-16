@@ -12,13 +12,16 @@ class TrainModelFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'MP '.$this->faker->numberBetween(14, 89), // Inversé min et max
+            'name' => 'MP '.$this->faker->numberBetween(14, 89),
             'base_price' => 1500000.00,
             'capacity_per_car' => $this->faker->numberBetween(100, 180),
             'electricity_cost_per_km' => 1.25,
             'maintenance_cost_factor' => 1.10,
             'max_speed' => 80,
             'operating_speed' => 60,
+            'composition_pattern' => ['M', 'R', 'M'],
+            'car_width' => 2.89,
+            'max_coupled_units' => 1,
         ];
     }
 }

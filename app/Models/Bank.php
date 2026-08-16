@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Bank extends Model
 {
+    use HasFactory;
     protected $fillable = ['name', 'interest_rate', 'description', 'max_loan_amount', 'repayment_duration_days'];
 
     public function accounts(): HasMany

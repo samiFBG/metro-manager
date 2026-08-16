@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Company\DepotType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,9 +23,16 @@ class Depot extends Model
         'maintenance_slots',
     ];
 
-    public function line(): BelongsTo
+    protected $casts = [
+        'type' => DepotType::class,
+    ];
+
+    /**
+     * Les lignes raccordées à ce dépôt
+     */
+    public function lines(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsTo(Line::class);
+        return $this->belongsToMany(Line::class);
     }
 
     public function company(): BelongsTo

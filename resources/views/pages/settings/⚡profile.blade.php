@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 /* @end-chisel-email-verification */
 use Flux\Flux;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
@@ -44,6 +45,64 @@ new #[Title('Profile settings')] class extends Component {
         $user->save();
 
         Flux::toast(variant: 'success', text: __('Profile updated.'));
+    }
+
+    /**
+     * Supprime toutes les rames et caisses achetées et recrédite le compte en supprimant les transactions de débit.
+     */
+    public function resetPurchases(): void
+    {
+        $user = Auth::user();
+        $company = $user?->company;
+
+        if (! $company) {
+            return;
+        }
+
+        DB::transaction(function () use ($company) {
+            // 1. Suppression des caisses individuelles
+            $company->trainCars()->delete();
+
+            // 2. Suppression des rames
+            $company->trains()->delete();
+
+            // 3. Suppression des transactions de débit liées aux achats (récupération dynamique du solde)
+            if ($company->bankAccount) {
+                $company->bankAccount->transactions()
+                    ->where('type', 'debit')
+                    ->whereIn('category', ['train_purchase', 'rolling_stock_purchase'])
+                    ->delete();
+            }
+        });
+
+        // Actualisation du badge de trésorerie dans le header
+        $this->dispatch('bank-account-updated');
+
+        Flux::toast(variant: 'success', text: __('Vos achats de rames ont été réinitialisés et recrédités.'));
+    }
+
+    /**
+     * Supprime l'entreprise de l'utilisateur, nettoie ses données et réinitialise l'onboarding.
+     */
+    public function resetCompany(): void
+    {
+        $user = Auth::user();
+
+        DB::transaction(function () use ($user) {
+            if ($user->company) {
+                $user->company->delete(); // Déclenche le booted() observer
+            }
+
+            $user->forceFill([
+                'onboarding_completed_at' => null,
+            ])->save();
+        });
+
+        $this->dispatch('bank-account-updated');
+
+        Flux::toast(variant: 'success', text: __('Votre entreprise a été réinitialisée avec succès.'));
+
+        $this->redirect(route('onboarding'), navigate: true);
     }
 
     /* @chisel-email-verification */
@@ -119,15 +178,82 @@ new #[Title('Profile settings')] class extends Component {
                         {{ __('Save') }}
                     </flux:button>
                 </div>
-
             </div>
         </form>
 
+        @if (Auth::user()->company)
+            {{-- Zone Réinitialisation des Achats --}}
+            <div class="pt-6 mt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-4">
+                <div>
+                    <flux:heading size="lg" class="text-amber-600 dark:text-amber-400">{{ __('Réinitialiser les achats de rames') }}</flux:heading>
+                    <flux:subheading>{{ __('Supprime toutes vos rames et caisses actuelles et recrédite les montants d\'achat sur votre compte bancaire.') }}</flux:subheading>
+                </div>
+
+                <flux:modal.trigger name="confirm-purchases-reset">
+                    <flux:button variant="filled">
+                        {{ __('Réinitialiser le matériel roulant') }}
+                    </flux:button>
+                </flux:modal.trigger>
+
+                <flux:modal name="confirm-purchases-reset" class="space-y-6">
+                    <div>
+                        <flux:heading size="lg">{{ __('Réinitialiser la flotte de rames ?') }}</flux:heading>
+                        <flux:subheading class="mt-2">
+                            {{ __('Toutes vos rames et caisses seront supprimées du dépôt. Les débits bancaires correspondants seront supprimés, restituant le solde d\'origine.') }}
+                        </flux:subheading>
+                    </div>
+
+                    <div class="flex justify-end gap-3">
+                        <flux:modal.close>
+                            <flux:button variant="ghost">{{ __('Annuler') }}</flux:button>
+                        </flux:modal.close>
+
+                        <flux:button variant="danger" wire:click="resetPurchases">
+                            {{ __('Confirmer la réinitialisation') }}
+                        </flux:button>
+                    </div>
+                </flux:modal>
+            </div>
+
+            {{-- Zone Réinitialisation de l'Entreprise --}}
+            <div class="pt-6 mt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-4">
+                <div>
+                    <flux:heading size="lg" class="text-red-600 dark:text-red-400">{{ __('Réinitialiser mon entreprise') }}</flux:heading>
+                    <flux:subheading>{{ __('Supprime définitivement votre entreprise (comptes bancaires, dépôts, trains) et relance la configuration initiale.') }}</flux:subheading>
+                </div>
+
+                <flux:modal.trigger name="confirm-company-reset">
+                    <flux:button variant="danger">
+                        {{ __('Supprimer l\'entreprise') }}
+                    </flux:button>
+                </flux:modal.trigger>
+
+                <flux:modal name="confirm-company-reset" class="space-y-6">
+                    <div>
+                        <flux:heading size="lg">{{ __('Êtes-vous absolument sûr ?') }}</flux:heading>
+                        <flux:subheading class="mt-2">
+                            {{ __('Cette action est irréversible. Votre entreprise, tous vos comptes bancaires, transactions, rames et configurations seront définitivement supprimés.') }}
+                        </flux:subheading>
+                    </div>
+
+                    <div class="flex justify-end gap-3">
+                        <flux:modal.close>
+                            <flux:button variant="ghost">{{ __('Annuler') }}</flux:button>
+                        </flux:modal.close>
+
+                        <flux:button variant="danger" wire:click="resetCompany">
+                            {{ __('Confirmer la suppression') }}
+                        </flux:button>
+                    </div>
+                </flux:modal>
+            </div>
+        @endif
+
         {{-- @chisel-email-verification --}}
         @if ($this->showDeleteUser)
-        {{-- @end-chisel-email-verification --}}
+            {{-- @end-chisel-email-verification --}}
             <livewire:pages::settings.delete-user-form />
-        {{-- @chisel-email-verification --}}
+            {{-- @chisel-email-verification --}}
         @endif
         {{-- @end-chisel-email-verification --}}
     </x-pages::settings.layout>

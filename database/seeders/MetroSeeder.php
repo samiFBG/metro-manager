@@ -16,7 +16,7 @@ class MetroSeeder extends Seeder
         $jsonPath = database_path('data/metro_lyon_import.json');
 
         if (! File::exists($jsonPath)) {
-            $this->command->error("Le fichier '{$jsonPath}' est introuvable ! Placer le dans database/data/.");
+            $this->command->error("Le fichier '{$jsonPath}' est introuvable ! Placez-le dans database/data/.");
 
             return;
         }
@@ -29,7 +29,7 @@ class MetroSeeder extends Seeder
             return;
         }
 
-        // Correspondance exacte entre les lignes TCL et tes modèles en BDD
+        // Correspondance des modèles de rames
         $lineTrainModels = [
             'A' => 'MPL 75',
             'B' => 'MPL 16',
@@ -37,75 +37,91 @@ class MetroSeeder extends Seeder
             'D' => 'MPL 85',
         ];
 
-        DB::transaction(function () use ($linesData, $lineTrainModels) {
+        // Niveaux d'automatisation exacts du réseau de Lyon
+        $lineAutomationLevels = [
+            'A' => 'semi_automated', // Conducteur à bord
+            'B' => 'automated',      // Auto GoA4
+            'C' => 'manual',         // Pilotage manuel (crémaillère)
+            'D' => 'automated',      // Auto MAGGALY GoA4
+        ];
+
+        DB::transaction(function () use ($linesData, $lineTrainModels, $lineAutomationLevels) {
             foreach ($linesData as $data) {
                 $code = $data['code'];
 
-                // 1. Filtrage du modèle de train correspondant dans ta table train_models
+                // 1. Filtrage du modèle de train
                 $targetModelName = $lineTrainModels[$code] ?? 'MPL 75';
                 $trainModel = TrainModel::where('name', $targetModelName)->first();
 
                 if (! $trainModel) {
-                    // Fallback si le nom exact n'est pas trouvé
                     $trainModel = TrainModel::first();
                     $this->command->warn("  ⚠ Modèle '{$targetModelName}' non trouvé pour la ligne {$code}, utilisation de '{$trainModel->name}'");
                 }
 
-                // 2. Recherche et résolution du fichier GeoJSON
-                $rawGeojsonPath = $data['geo_json_path'];
-                $possiblePaths = [
-                    base_path($rawGeojsonPath),
-                    database_path('data/'.$rawGeojsonPath),
-                    base_path('geojson/'.basename($rawGeojsonPath)),
-                ];
+                // 2. Détermination du niveau d'automatisation
+                $automationLevel = $lineAutomationLevels[$code] ?? ($data['automation_level'] ?? 'semi_automated');
 
+                // 3. Résolution du fichier GeoJSON
+                $rawGeojsonPath = $data['geo_json_path'] ?? null;
                 $geojsonContent = null;
-                foreach ($possiblePaths as $path) {
-                    if (File::exists($path)) {
-                        $geojsonContent = json_decode(File::get($path), true);
-                        break;
+
+                if ($rawGeojsonPath) {
+                    $possiblePaths = [
+                        base_path($rawGeojsonPath),
+                        database_path('data/'.$rawGeojsonPath),
+                        base_path('geojson/'.basename($rawGeojsonPath)),
+                    ];
+
+                    foreach ($possiblePaths as $path) {
+                        if (File::exists($path)) {
+                            $geojsonContent = json_decode(File::get($path), true);
+                            break;
+                        }
                     }
                 }
 
-                if (! $geojsonContent) {
+                if (! $geojsonContent && $rawGeojsonPath) {
                     $this->command->warn("  ⚠ GeoJSON introuvable pour la ligne {$code}");
                 }
 
-                // 3. Insertion / Mise à jour de la Ligne
+                // 4. Insertion / Mise à jour de la Ligne
                 $line = Line::updateOrCreate(
                     ['code' => $code],
                     [
                         'name' => $data['name'],
                         'color_hex' => $data['color_hex'],
+                        'automation_level' => $automationLevel,
                         'geo_json_path' => $geojsonContent,
-                        'train_model_id' => $trainModel->id,
+                        'train_model_id' => $trainModel?->id,
                         'min_cars_per_train' => $data['min_cars_per_train'] ?? 2,
                         'max_cars_per_train' => $data['max_cars_per_train'] ?? 4,
                     ]
                 );
 
-                $this->command->info("Ligne '{$line->code}' enregistrée (Modèle : {$trainModel->name}).");
+                $this->command->info("Ligne '{$line->code}' ({$line->automation_level}) enregistrée (Modèle : {$trainModel?->name}).");
 
-                // 4. Synchronisation des Stations
-                foreach ($data['stations'] as $stationData) {
-                    Station::updateOrCreate(
-                        [
-                            'line_id' => $line->id,
-                            'order' => $stationData['order'],
-                        ],
-                        [
-                            'name' => $stationData['name'],
-                            'latitude' => $stationData['latitude'],
-                            'longitude' => $stationData['longitude'],
-                            'passenger_flow_weight' => $stationData['passenger_flow_weight'] ?? 1.0,
-                        ]
-                    );
+                // 5. Synchronisation des Stations
+                if (! empty($data['stations'])) {
+                    foreach ($data['stations'] as $stationData) {
+                        Station::updateOrCreate(
+                            [
+                                'line_id' => $line->id,
+                                'order' => $stationData['order'],
+                            ],
+                            [
+                                'name' => $stationData['name'],
+                                'latitude' => $stationData['latitude'],
+                                'longitude' => $stationData['longitude'],
+                                'passenger_flow_weight' => $stationData['passenger_flow_weight'] ?? 1.0,
+                            ]
+                        );
+                    }
+
+                    $this->command->line('  └─ '.count($data['stations']).' stations liées.');
                 }
-
-                $this->command->line('  └─ '.count($data['stations']).' stations liées.');
             }
         });
 
-        $this->command->info('Importation BDD terminée avec succès !');
+        $this->command->info('Importation BDD des lignes de métro terminée avec succès !');
     }
 }

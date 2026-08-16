@@ -12,6 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Page de jeu (accès restreint si l'onboarding n'est pas complété)
     Route::middleware(['onboarding.completed'])->group(function () {
         Route::livewire('/game', 'pages::game')->name('game');
+        Route::livewire('/game/shop', 'pages::shop')->name('shop');
     });
 });
 

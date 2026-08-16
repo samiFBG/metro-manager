@@ -11,15 +11,8 @@ return new class extends Migration
         Schema::create('bank_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bank_account_id')->constrained('bank_accounts')->cascadeOnDelete();
-            $table->enum('type', ['credit', 'debit']);
-            $table->enum('category', [
-                'ticket_sales',
-                'train_purchase',
-                'electricity_bill',
-                'maintenance_cost',
-                'loan_disbursement',
-                'loan_repayment',
-            ]);
+            $table->string('type');
+            $table->string('category');
             $table->decimal('amount', 15, 2);
             $table->string('description');
             $table->timestamp('created_at')->useCurrent();

@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Exécution des seeders dans le bon ordre
+        $this->call([
+            BankSeeder::class,
+            TrainModelSeeder::class,
+            MetroSeeder::class,   // Doit passer avant DepotSeeder pour créer les lignes A et B
+            DepotSeeder::class,  // Associe UTMA aux lignes A et B
         ]);
     }
 }
